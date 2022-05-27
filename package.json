@@ -5,6 +5,11 @@
   "repository": "git@github.com:Davidkle/SkillCoin.git",
   "author": "David Le <davidkle@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "test": "truffle test",
+    "compile": "truffle complile",
+    "migrate": "truffle migrate"
+  },
   "dependencies": {
     "truffle": "^5.5.15"
   }
