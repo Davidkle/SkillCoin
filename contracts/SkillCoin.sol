@@ -8,8 +8,6 @@ contract SkillCoin is ERC20 {
   mapping(address => mapping(address => uint256)) public allowed;
   uint256 public totalSupply;
 
-  address public contractOwner;
-
   /*
     NOTE:
     The following variables are OPTIONAL vanities. One does not have to include them.
@@ -23,18 +21,17 @@ contract SkillCoin is ERC20 {
   constructor() {
     uint256 _initialAmount = 1000000000;
 
-    contractOwner = msg.sender;
-
     balances[msg.sender] = _initialAmount; // Give the creator all initial tokens
     totalSupply = _initialAmount; // Update total supply
   }
 
   function transfer(address _to, uint256 _value) public override returns (bool success) {
-    require(msg.sender == contractOwner, 'Only the owner of the contract can issue a transfer');
     require(balances[msg.sender] >= _value, 'token balance is lower than the value requested');
+
     balances[msg.sender] -= _value;
     balances[_to] += _value;
-    emit Transfer(msg.sender, _to, _value); //solhint-disable-line indent, no-unused-vars
+
+    emit Transfer(msg.sender, _to, _value);
     return true;
   }
 
