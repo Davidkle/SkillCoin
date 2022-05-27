@@ -11,7 +11,7 @@ contract('SkillCoin', (accounts) => {
     assert.equal(balance.valueOf(), 1000000000);
   });
 
-  it('should send coin correctly', async () => {
+  it('should send coins correctly', async () => {
     const skillCoinInstance = await SkillCoin.deployed(owner);
     await skillCoinInstance.transfer(user1, 10);
 
