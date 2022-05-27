@@ -11,11 +11,21 @@ contract('SkillCoin', (accounts) => {
     assert.equal(balance.valueOf(), 1000000000);
   });
 
-  it('should send coins correctly', async () => {
+  it('should send coins from owner to user', async () => {
     const skillCoinInstance = await SkillCoin.deployed(owner);
     await skillCoinInstance.transfer(user1, 10);
 
     const balanceUser1 = (await skillCoinInstance.balanceOf.call(user1)).toNumber();
     assert.equal(balanceUser1, 10); 
+  });
+
+  it('should send coins from user to user', async () => {
+    const skillCoinInstance = await SkillCoin.deployed(owner);
+
+    try {
+      await skillCoinInstance.transfer(user2, 10, { from: user1 });
+    } catch (error) {
+      assert(error, "Expected an error but did not get one");
+    }
   });
 });
