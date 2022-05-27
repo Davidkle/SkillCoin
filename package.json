@@ -1,0 +1,11 @@
+{
+  "name": "skill-coin",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Davidkle/SkillCoin.git",
+  "author": "David Le <davidkle@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "truffle": "^5.5.15"
+  }
+}
